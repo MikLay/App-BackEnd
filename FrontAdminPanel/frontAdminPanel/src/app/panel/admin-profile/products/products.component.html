@@ -1,0 +1,96 @@
+<div class="container align-content-center .col-md-6 .offset-md-3">
+  <form class="form-inline d-flex flex-row">
+    <p class="mx-sm-1 mb-2 p-2">Add new product to base: </p>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Name</label>
+      <input type="text" [(ngModel)]="addProduct.name" class="form-control p-2" name="name" id="name" placeholder="Name" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Description</label>
+      <input type="text" [(ngModel)]="addProduct.description" class="form-control p-2" name="descrc" id="descr" placeholder="Description" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">IMG Url</label>
+      <input type="text" [(ngModel)]="addProduct.image_url" class="form-control p-2" name="img" id="img_url" placeholder="Img_Url" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Price</label>
+      <input type="text" [(ngModel)]="this.addProduct.price" class="form-control p-2" name="price" id="price" placeholder="Price" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Special Price</label>
+      <input type="text" [(ngModel)]="this.addProduct.special_price" class="form-control p-2" name="special_price" id="special_price" placeholder="Special_Price">
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Category</label>
+      </div>
+      <select required  name="category" [(ngModel)]= "this.addProduct.category" class="custom-select" id="inputGroupSelect01">
+        <option disabled>Choose..</option>
+        <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+      </select>
+    </div>
+
+    <button type="submit" (click)="postProduct()" class="btn btn-primary mb-2 p-2">Post to base</button>
+  </form>
+
+  <form class="form-inline d-flex flex-row">
+    <p class="mx-sm-1 mb-2 p-2">Delete product from the base: </p>
+    <div class="form-group mx-sm-3 mb-2 p-2">
+      <label class="sr-only">Id</label>
+      <input type="text" [ngModel]="this.choosedProduct.id"  name="id" class="form-control p-2" id="IdDeletion" placeholder="Id" required>
+    </div>
+    <button (click)="deleteProduct()" type="submit" class="btn btn-danger mb-2 p-2">Delete</button>
+  </form>
+  <form class="form-inline d-flex flex-row">
+    <p class="mx-sm-1 mb-2 p-2">Edit product with special ID:</p>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">ID</label>
+      <input type="text" [(ngModel)]="this.choosedProduct.id" class="form-control p-2" name="id2" id="id2" placeholder="ID" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Name</label>
+      <input type="text" [(ngModel)]="this.choosedProduct.name" class="form-control p-2" name="name2" id="name2" placeholder="Name" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Description</label>
+      <input type="text" [(ngModel)]="this.choosedProduct.description" class="form-control p-2" name="descr2" id="descr2" placeholder="Description" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">IMG Url</label>
+      <input type="text" [(ngModel)]="this.choosedProduct.image_url" class="form-control p-2" name="img_url2" id="img_url2" placeholder="Img_Url" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Price</label>
+      <input type="number" [(ngModel)]="this.choosedProduct.price" class="form-control p-2" name="price2" id="price2" placeholder="Price" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Special Price</label>
+      <input type="number" [(ngModel)]="choosedProduct.special_price" class="form-control p-2" name="s_price2" id="special_price2" placeholder="Special_Price" required>
+    </div>
+  <button (click)="editProduct()" type="submit" class="btn btn-success mb-2 p-2">Edit</button>
+  </form>
+  <table class="table table-hover table-responsive">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">IMG_URL</th>
+      <th scope="col">PRICE</th>
+      <th scope="col">SPECIAL PRICE</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let product of products">
+    <tr (click)="chooseProduct(product)">
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.name}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.image_url}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.special_price}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

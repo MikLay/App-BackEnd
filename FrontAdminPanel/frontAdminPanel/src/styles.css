@@ -1,0 +1,9 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.container {
+  border: outset deepskyblue;
+  background-color: #5a3f9d1f;
+}
+table {
+  border: inset darkturquoise;
+  background-color: #5a3f9d1f;
+}

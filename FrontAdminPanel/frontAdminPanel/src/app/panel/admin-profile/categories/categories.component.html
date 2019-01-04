@@ -1,0 +1,55 @@
+<div class="container align-content-center .col-md-6 .offset-md-3">
+<form class="form-inline d-flex flex-row">
+  <p class="mx-sm-1 mb-2 p-2">Add new category to base: </p>
+  <div class="form-group mx-sm-1 mb-2 p-2">
+    <label class="sr-only">Name</label>
+    <input type="text" [(ngModel)]="nameAdd" class="form-control p-2" name="name" id="name" placeholder="Name" required>
+  </div>
+  <div class="form-group mx-sm-1 mb-2 p-2">
+    <label class="sr-only">Description</label>
+    <input type="text" [(ngModel)]="descriptionAdd" class="form-control p-2" name="description" id="description" placeholder="Description" required>
+  </div>
+  <button type="submit" (click)="postCategory()" class="btn btn-primary mb-2 p-2">Post to base</button>
+</form>
+  <form class="form-inline d-flex flex-row">
+    <p class="mx-sm-1 mb-2 p-2">Delete category from the base: </p>
+    <div class="form-group mx-sm-3 mb-2 p-2">
+      <label class="sr-only">Id</label>
+      <input type="text" [ngModel]="this.choosedCategory.id"  name="id" class="form-control p-2" id="IdDeletion" placeholder="Id" required>
+    </div>
+    <button (click)="deleteCategory()" type="submit" class="btn btn-danger mb-2 p-2">Delete</button>
+  </form>
+  <form class="form-inline d-flex flex-row">
+    <p class="mx-sm-1 mb-2 p-2">Edit category with special ID:</p>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Id</label>
+      <input type="text" class="form-control p-2"  [(ngModel)]="this.choosedCategory.id" name="id" id="IdEdition" placeholder="Id" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Name</label>
+      <input type="text" [(ngModel)]="this.choosedCategory.name" class="form-control p-2" name="name" id="name2" placeholder="Name" required>
+    </div>
+    <div class="form-group mx-sm-1 mb-2 p-2">
+      <label class="sr-only">Description</label>
+      <input type="text" [(ngModel)]="this.choosedCategory.description" class="form-control p-2" name="description" id="description2" placeholder="Description" required>
+    </div>
+    <button (click)="editCategory()" type="submit" class="btn btn-success mb-2 p-2">Edit</button>
+  </form>
+  <table class="table table-hover  table-responsive">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">DESCRIPTION</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let category of categories">
+    <tr (click)="chooseCategory(category.id, category.name, category.description)">
+      <th scope="row">{{category.id}}</th>
+      <td>{{category.name}}</td>
+      <td>{{category.description}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

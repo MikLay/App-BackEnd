@@ -1,0 +1,15 @@
+.elements button {
+  margin-left: 10px;
+}
+
+button {
+  margin-left: 5px;
+}
+.logout {
+  float: right;
+}
+
+.navbar{
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff)!important;
+}
+

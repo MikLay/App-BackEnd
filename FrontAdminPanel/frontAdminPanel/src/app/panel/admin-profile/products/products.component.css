@@ -1,0 +1,7 @@
+table th {
+  width: auto !important;
+  padding: 0px 0px 0px 50px;
+}
+table {
+  max-height: 500px;
+}
